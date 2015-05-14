@@ -18,8 +18,7 @@ function reroll($derniereQuestion){
 	//générer une question random
 	$randomNum = Math.floor((Math.random() * 79));
 	$randomQuestion = hiraB[$randomNum];
-	while($randomQuestion=="nothing" || $randomQuestion==$derniereQuestion)
-	{
+	while($randomQuestion=="nothing" || $randomQuestion==$derniereQuestion){
 		$randomNum = Math.floor((Math.random() * 79));
 		$randomQuestion = hiraB[$randomNum];
 	}
@@ -31,13 +30,18 @@ function reroll($derniereQuestion){
 	});
 	
 	//insérer la bonne réponse dans une case random
-	$(".answer").eq( Math.floor((Math.random()*9)) ).text( hiraA[$randomNum] );
+	//si on trouve pas déjà la bonne réponse
+	if($.inArray( hiraA[$randomNum], $("#answers").text() )  == -1){
+		$(".answer").eq( Math.floor((Math.random()*9)) ).text( hiraA[$randomNum] );
+	}
+	
+	
 }
 
 function creerRandomReponse(){
 	$randomReponse = hiraA[Math.floor((Math.random() * 79))];
-	while($randomReponse=="nothing")
-	{
+	//trouver une reponse qui n'est ni "nothing" ni déjà dans la liste
+	while($randomReponse=="nothing"   ||   ($.inArray( $randomReponse, $("#answers").text() ) != -1)){
 		$randomReponse = hiraA[Math.floor((Math.random() * 79))];
 	}
 	return $randomReponse;
