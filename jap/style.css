@@ -85,7 +85,7 @@ header{
 	background-color: white;
 	cursor: pointer;
 }
-.answer:hover{
+html.no-touch .answer:hover{
 	border: 1px solid black;
 	width: 78px;
 	height: 38px;

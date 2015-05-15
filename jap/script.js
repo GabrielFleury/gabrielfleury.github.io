@@ -427,11 +427,4 @@ function updatePoints(){
 	$("#score").text("Score: " + pts + "/" + ptsTotal);
 }
 
-function fix()
-{
-    var el = this;
-    var par = el.parentNode;
-    var next = el.nextSibling;
-    par.removeChild(el);
-    setTimeout(function() {par.insertBefore(el, next);}, 0)
-}
+$('.answer').on('click', function(e) { e.preventDefault(); });
