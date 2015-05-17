@@ -340,6 +340,7 @@ var pts=0;
 var ptsTotal=0;
 var arraySymboles=arrayHiragana;
 var arrayLettres=arrayPhoHiragana;
+var timeLeft=10;
 
 function initialiser() 
 {
@@ -407,6 +408,9 @@ function creerRandomReponse(){
 
 function verifierReponse() 
 {
+	//empêcher le reclick
+	$(".answer").unbind( "click" );
+	
 	//vérifier
 	$question = $("#question").text();
 	$reponse = $(this).text();
@@ -416,11 +420,24 @@ function verifierReponse()
 	//update pointage
 	if($questionNum==$reponseNum){
 		pts++;
+		$(this).addClass('answerGood');
+	}
+	else{
+		$(this).addClass('answerBad');
 	}
 	ptsTotal++;
 	updatePoints()
 	
-	reroll($question);
+	
+	
+	//après 1sec changer la question
+	setTimeout(function(){
+		reroll($question);
+		
+		//remettre le click
+		$(".answer").click(verifierReponse);
+		$(".answer").attr("class", "answer");
+	}, 1000);
 }
 
 function updatePoints(){

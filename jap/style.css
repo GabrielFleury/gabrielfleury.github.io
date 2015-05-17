@@ -89,11 +89,16 @@ html.no-touch .answer:hover{
 	border: 1px solid black;
 	width: 78px;
 	height: 38px;
-	background-color: #FFFFCC;
 }
 
 .answer:nth-child(3n){
 	margin-right: 0;
+}
+.answerGood{
+	background-color: lightgreen;
+}
+.answerBad{
+	background-color: red;
 }
 
 #footer{
