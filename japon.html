@@ -28,16 +28,21 @@
 <body>
 
 	<header>
-		<div id="boutons">
-			<div id="btnHiragana" class="bouton selectedMode" ontouchend="this.onclick=fix">Hiragana</div><div id="btnKatakana" class="bouton" ontouchend="this.onclick=fix">Katakana</div>
+		<div class="centrer">
+			<div class="titres">Mode:</div>
+			<div id="boutons" class="centrer">
+				<div id="btnHiragana" class="bouton selectedMode">Hiragana</div><div id="btnKatakana" class="bouton">Katakana</div>
+			</div>
+			
+			<div class="titres" style="margin-top:50px">Temps par question:</div>
+			<div id="boutons2" class="centrer">
+				<div id="btnTemps0" class="bouton selectedMode">Infini</div><div id="btnTemps10" class="bouton">10 secs</div>
+			</div>
+			
+			<div id="timer" class="centrer">
+			10
+			</div>
 		</div>
-		
-		<!--
-		<div id="boutons2">
-			Temps par question:
-			<div id="btnTemps0" class="bouton selectedMode" ontouchend="this.onclick=fix">Infini</div><div id="btnTemps10" class="bouton" ontouchend="this.onclick=fix">10 secs</div>
-		</div>
-		-->
 	</header>
 	
 	<div id="container">

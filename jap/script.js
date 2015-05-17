@@ -340,7 +340,9 @@ var pts=0;
 var ptsTotal=0;
 var arraySymboles=arrayHiragana;
 var arrayLettres=arrayPhoHiragana;
+var timed=false;
 var timeLeft=10;
+var ticker;
 
 function initialiser() 
 {
@@ -350,6 +352,8 @@ function initialiser()
 	$(".answer").click(verifierReponse);
 	$("#btnHiragana").click(hiraganaMode);
 	$("#btnKatakana").click(katakanaMode);
+	$("#btnTemps0").click(infiniteMode);
+	$("#btnTemps10").click(timedMode);
 }
 
 function hiraganaMode(){
@@ -360,7 +364,7 @@ function hiraganaMode(){
 	reroll("a");
 	pts=0;
 	ptsTotal=0;
-	updatePoints()
+	updatePoints();
 }
 function katakanaMode(){
 	$("#btnHiragana").removeClass('selectedMode');
@@ -370,7 +374,34 @@ function katakanaMode(){
 	reroll("a");
 	pts=0;
 	ptsTotal=0;
-	updatePoints()
+	updatePoints();
+}
+function infiniteMode(){
+	$("#btnTemps0").addClass('selectedMode');
+	$("#btnTemps10").removeClass('selectedMode');
+	
+	$("#timer").css("visibility", "hidden");
+	timed=false;
+	clearTimeout(ticker);
+	
+	reroll("a");
+	pts=0;
+	ptsTotal=0;
+	updatePoints();
+}
+function timedMode(){
+	$("#btnTemps0").removeClass('selectedMode');
+	$("#btnTemps10").addClass('selectedMode');
+	
+	$("#timer").css("visibility", "visible");
+	timed=true;
+	clearTimeout(ticker);
+	timeLeft=10;
+		
+	reroll("a");
+	pts=0;
+	ptsTotal=0;
+	updatePoints();
 }
 
 function reroll($derniereQuestion){
@@ -394,7 +425,12 @@ function reroll($derniereQuestion){
 		$(".answer").eq( Math.floor((Math.random()*9)) ).text( arraySymboles[$randomNum] );
 	}
 	
-	
+	//(re)démarrer le timer
+	if(timed){
+		clearTimeout(ticker);
+		timeLeft=10;
+		tick();
+	}
 }
 
 function creerRandomReponse(){
@@ -408,8 +444,9 @@ function creerRandomReponse(){
 
 function verifierReponse() 
 {
-	//empêcher le reclick
+	//empêcher le reclick, stopper le timer
 	$(".answer").unbind( "click" );
+	clearTimeout(ticker);
 	
 	//vérifier
 	$question = $("#question").text();
@@ -426,22 +463,50 @@ function verifierReponse()
 		$(this).addClass('answerBad');
 	}
 	ptsTotal++;
-	updatePoints()
-	
-	
+	updatePoints();
 	
 	//après 1sec changer la question
-	setTimeout(function(){
-		reroll($question);
-		
-		//remettre le click
-		$(".answer").click(verifierReponse);
-		$(".answer").attr("class", "answer");
-	}, 1000);
+	nextQuestion();
 }
 
 function updatePoints(){
 	$("#score").text("Score: " + pts + "/" + ptsTotal);
 }
 
+function nextQuestion(){
+	setTimeout(function(){
+		reroll( $("#question").text() );
+		
+		//remettre le click
+		$(".answer").click(verifierReponse);
+		$(".answer").attr("class", "answer");
+		$("#timer").attr("class", "centrer");
+	}, 1000);
+}
+
+function tick(){
+	$("#timer").text(timeLeft);
+	
+	ticker = setTimeout(function(){ 
+		if(timeLeft > 0){
+			//keep going
+			timeLeft--;
+			$("#timer").text(timeLeft);
+			tick();
+		}
+		else{
+			//force error
+			$("#timer").addClass('answerBad');
+			ptsTotal++;
+			updatePoints();
+			//empêcher le reclick, stopper le timer
+			$(".answer").unbind( "click" );
+			clearTimeout(ticker);
+			
+			nextQuestion();
+		}
+	}, 1000);
+}
+
+$('.bouton').on('click', function(e) { e.preventDefault(); });
 $('.answer').on('click', function(e) { e.preventDefault(); });

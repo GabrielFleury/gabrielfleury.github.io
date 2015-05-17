@@ -4,19 +4,33 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 header{
 	width: 100%;
 	margin: 0px auto 0;
-	overflow: auto;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+.titres{
+	clear: both;
+	width: 100%;
+	font-size: 0.8em;
+	margin-top: 25px;
+	margin-bottom: 3px;
+}
+.centrer{
+	clear: both;
+	margin: 0 auto;
+	width: 250px;
 }
 
 #boutons{
-	width: 250px;
-	margin: 10px auto;
-	font-size: 20px;
 }
 
 #boutons2{
-	width: 250px;
-	margin: 10px auto;
-	font-size: 20px;
+}
+
+#timer{
+	font-size: 1.5em;
+	margin-top: 100px;
+	visibility: hidden;
 }
 
 .bouton{
@@ -45,10 +59,11 @@ header{
 }
 
 #container{
+	clear: both;
+	margin: 10px auto 0;
+	overflow: auto;
 	background-color: lightgrey;
 	width: 100%;
-	margin: 150px auto 0;
-	overflow: auto;
 	padding-bottom: 10px;
 }
 
