@@ -342,6 +342,7 @@ var arraySymboles=arrayHiragana;
 var arrayLettres=arrayPhoHiragana;
 var timed=false;
 var timeLeft=10;
+var timeMax=99;
 var ticker;
 
 function initialiser() 
@@ -353,7 +354,8 @@ function initialiser()
 	$("#btnHiragana").click(hiraganaMode);
 	$("#btnKatakana").click(katakanaMode);
 	$("#btnTemps0").click(infiniteMode);
-	$("#btnTemps10").click(timedMode);
+	$("#btnTemps10").click(timedMode10);
+	$("#btnTemps5").click(timedMode5);
 }
 
 function hiraganaMode(){
@@ -379,6 +381,7 @@ function katakanaMode(){
 function infiniteMode(){
 	$("#btnTemps0").addClass('selectedMode');
 	$("#btnTemps10").removeClass('selectedMode');
+	$("#btnTemps5").removeClass('selectedMode');
 	
 	$("#timer").css("visibility", "hidden");
 	timed=false;
@@ -389,14 +392,33 @@ function infiniteMode(){
 	ptsTotal=0;
 	updatePoints();
 }
-function timedMode(){
+function timedMode10(){
 	$("#btnTemps0").removeClass('selectedMode');
 	$("#btnTemps10").addClass('selectedMode');
+	$("#btnTemps5").removeClass('selectedMode');
 	
 	$("#timer").css("visibility", "visible");
 	timed=true;
 	clearTimeout(ticker);
-	timeLeft=10;
+	timeMax=10;
+	timeLeft=timeMax;
+		
+	reroll("a");
+	pts=0;
+	ptsTotal=0;
+	updatePoints();
+}
+
+function timedMode5(){
+	$("#btnTemps0").removeClass('selectedMode');
+	$("#btnTemps10").removeClass('selectedMode');
+	$("#btnTemps5").addClass('selectedMode');
+	
+	$("#timer").css("visibility", "visible");
+	timed=true;
+	clearTimeout(ticker);
+	timeMax=5;
+	timeLeft=timeMax;
 		
 	reroll("a");
 	pts=0;
@@ -428,7 +450,7 @@ function reroll($derniereQuestion){
 	//(re)démarrer le timer
 	if(timed){
 		clearTimeout(ticker);
-		timeLeft=10;
+		timeLeft=timeMax;
 		tick();
 	}
 }
@@ -450,16 +472,17 @@ function verifierReponse()
 	
 	//vérifier
 	$question = $("#question").text();
-	$reponse = $(this).text();
+	$maReponse = $(this).text();
 	$questionNum = $.inArray($question, arrayLettres);
-	$reponseNum = $.inArray($reponse, arraySymboles);
+	$maReponseNum = $.inArray($maReponse, arraySymboles);
 	
 	//update pointage
-	if($questionNum==$reponseNum){
+	if($questionNum==$maReponseNum){
 		pts++;
 		$(this).addClass('answerGood');
 	}
 	else{
+		corriger(arraySymboles[$.inArray($("#question").text(), arrayLettres)]);
 		$(this).addClass('answerBad');
 	}
 	ptsTotal++;
@@ -467,6 +490,14 @@ function verifierReponse()
 	
 	//après 1sec changer la question
 	nextQuestion();
+}
+
+function corriger($bonneReponse){
+	$(".answer").each(function( i ) {
+		if($(this).text() == $bonneReponse){
+			$(this).attr("class", "answer correction");
+		}
+	});
 }
 
 function updatePoints(){
@@ -481,7 +512,7 @@ function nextQuestion(){
 		$(".answer").click(verifierReponse);
 		$(".answer").attr("class", "answer");
 		$("#timer").attr("class", "centrer");
-	}, 1000);
+	}, 1500);
 }
 
 function tick(){
@@ -497,6 +528,7 @@ function tick(){
 		else{
 			//force error
 			$("#timer").addClass('answerBad');
+			corriger(arraySymboles[$.inArray($("#question").text(), arrayLettres)]);
 			ptsTotal++;
 			updatePoints();
 			//empêcher le reclick, stopper le timer
