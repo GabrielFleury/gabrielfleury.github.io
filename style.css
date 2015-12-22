@@ -2,32 +2,109 @@
 
 * { margin:0; padding:0; }
 article, aside, figure, footer, header, hgroup, nav, section { display:block; }
-a img{ border-style:none; }
+a img{ border-style:none;}
 
-html, body {height: 100%}
+/* Font */
+@font-face {
+    font-family: Cen;
+    src: url("tw-cen-mt-condensed-medium.ttf");
+}
+
+#warning{
+	width:100%;
+	text-align:center;
+	font-size: 40px;
+}
 
 html{
-	background: #2a2a2a;
+	background: white;
+	font-family: Calibri, Arial, sans-serif;
+	color: #1a1b1f;
 }
 
 body{
 	overflow-x: hidden;
-	background: url("http://i.imgur.com/bAr5Pqj.png");
-	background-size: 100%;
-	color: white;
-  	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.container {
-	position: relative;
-	width: 960px;
-	overflow: auto;
+#top{
+	width: 100%;
+	height: 168px;
+	background: #1a1b1f url("img/bg_header.png") center repeat-x;
+}
+
+header{
 	margin: 0 auto;
-	background-color: rgba(0,0,0, 0.5);
-	min-height: 100%;
-	text-align: center;
-	
-	-moz-box-shadow:    0px 0px 60px 0px rgba(0,0,0,0.75);
-	-webkit-box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.75);
-	box-shadow:         0px 0px 60px 0px rgba(0,0,0,0.75);
+	height: 168px;
+	width: 1400px;
+	color: #e4e0e0;
+}
+
+h1{
+	width: 211px;
+	height: 146px;
+	margin-top: 10px;
+	float: left;
+}
+h2{
+	margin-bottom: 20px;
+	font-size: 40px;
+	font-family: Cen, Arial, sans-serif;
+}
+
+nav{
+	width: 700px;
+	float: right;
+	margin-top: 115px;
+	text-align: right;
+	font-size: 40px;
+	font-family: Cen, Arial, sans-serif;
+}
+
+nav a{
+	text-decoration: none;
+	color: #e4e0e0;
+	margin-left: 40px;
+}
+nav a:hover{
+	color: #bd3b3b;
+}
+
+.navCurrent{
+	text-decoration: underline;
+}
+
+#content{
+	width:1200px;
+	height:300px;
+	margin: 30px auto 0;
+}
+
+.projectLink{
+	width: 300px;
+	height: 300px;
+	float: left;
+	border: 0px #bd3b3b solid;
+}
+.projectLink:hover{
+	width: 280px;
+	height: 280px;
+	border: 10px #bd3b3b solid;
+}
+
+.projectIcon{
+	width: 300px;
+	height: 300px;
+	float: left;
+}
+#proj_ram{
+	background: url("img/icon_proj_ram.jpg")
+}
+#proj_stratos{
+	background: url("img/icon_proj_stratos.jpg")
+}
+#proj_blood{
+	background: url("img/icon_proj_blood.jpg")
+}
+#proj_pilot{
+	background: url("img/icon_proj_pilot.jpg")
 }
