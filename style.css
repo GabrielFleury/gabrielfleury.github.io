@@ -14,6 +14,7 @@ a img{ border-style:none;}
 	width:100%;
 	text-align:center;
 	font-size: 40px;
+	padding-top: 50px;
 }
 
 html{
@@ -37,24 +38,30 @@ header{
 	height: 168px;
 	width: 1400px;
 	color: #e4e0e0;
+	background: #1a1b1f url("img/bg_header.png") center repeat-x;
 }
 
 h1{
+	float: left;
 	width: 211px;
 	height: 146px;
 	margin-top: 10px;
-	float: left;
+	margin-left: 50px;
 }
 h2{
 	margin-bottom: 20px;
 	font-size: 40px;
 	font-family: Cen, Arial, sans-serif;
 }
+p{
+	clear:both;
+	margin-bottom: 20px;
+}
 
 nav{
-	width: 700px;
 	float: right;
 	margin-top: 115px;
+	margin-right: 50px;
 	text-align: right;
 	font-size: 40px;
 	font-family: Cen, Arial, sans-serif;
@@ -79,9 +86,15 @@ nav a:hover{
 	margin: 30px auto 0;
 }
 
-.projectLink{
+.projectIcon{
 	width: 300px;
 	height: 300px;
+	float: left;
+}
+
+.projectLink{
+	width: 100%;
+	height: 100%;
 	float: left;
 	border: 0px #bd3b3b solid;
 }
@@ -91,11 +104,6 @@ nav a:hover{
 	border: 10px #bd3b3b solid;
 }
 
-.projectIcon{
-	width: 300px;
-	height: 300px;
-	float: left;
-}
 #proj_ram{
 	background: url("img/icon_proj_ram.jpg")
 }
@@ -107,4 +115,45 @@ nav a:hover{
 }
 #proj_pilot{
 	background: url("img/icon_proj_pilot.jpg")
+}
+
+.showcase{
+	margin: 0 auto;
+	width:100%;
+	height: auto;
+}
+
+/* mmmmmmedia */
+@media screen and (max-width: 1400px){
+	header{
+		width: 100%;
+	}
+	
+	
+}
+
+@media screen and (max-width: 1200px){
+	#content{
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 800px){	
+	h1{
+		position: absolute;
+		top: 10px;
+		left: 15px;
+		margin: 0;
+	}
+	
+	nav{
+		width: 65%;
+		margin-top: 10px;
+		margin-right: 15px;
+	}
+	nav a{
+		clear: both;
+		float: right;
+		margin-bottom: 10px;
+	}
 }
