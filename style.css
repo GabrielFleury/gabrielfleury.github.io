@@ -49,7 +49,7 @@ h1{
 	margin-left: 50px;
 }
 h2{
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-size: 40px;
 	font-family: Cen, Arial, sans-serif;
 }
@@ -104,6 +104,9 @@ nav a:hover{
 	border: 10px #bd3b3b solid;
 }
 
+#proj_rox{
+	background: url("img/icon_proj_rox.jpg")
+}
 #proj_ram{
 	background: url("img/icon_proj_ram.jpg")
 }
@@ -113,8 +116,8 @@ nav a:hover{
 #proj_blood{
 	background: url("img/icon_proj_blood.jpg")
 }
-#proj_pilot{
-	background: url("img/icon_proj_pilot.jpg")
+#proj_tf2{
+	background: url("img/icon_proj_tf2.jpg")
 }
 
 .showcase{
