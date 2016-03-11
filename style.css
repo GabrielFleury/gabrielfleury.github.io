@@ -120,11 +120,25 @@ nav a:hover{
 	background: url("img/icon_proj_tf2.jpg")
 }
 
+.showcase_container{
+	position:relative;
+}
 .showcase{
-	margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 	width:100%;
 	height: auto;
 }
+
+.expand{
+	opacity: 0;
+	position: absolute;
+    bottom: 10px;
+    left: 575px;
+}
+
+.showcase:hover + .expand { opacity: 1; }
+.expand:hover { opacity: 1; }
 
 /* mmmmmmedia */
 @media screen and (max-width: 1400px){
