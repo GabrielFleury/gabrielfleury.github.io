@@ -120,6 +120,15 @@ nav a:hover{
 	background: url("img/icon_proj_tf2.jpg")
 }
 
+
+#cv{
+	position:absolute;
+	top:35px;
+	right:0;
+	width:85px;
+	width:110px;
+}
+
 .showcase_container{
 	position:relative;
 }
@@ -172,5 +181,8 @@ nav a:hover{
 		clear: both;
 		float: right;
 		margin-bottom: 10px;
+	}
+	#cv{
+		position: static;
 	}
 }
