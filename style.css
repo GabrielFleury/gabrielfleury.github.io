@@ -65,7 +65,6 @@ a{
 
 nav{
 	float: right;
-	margin-top: 115px;
 	margin-right: 50px;
 	text-align: right;
 	font-size: 40px;
@@ -75,12 +74,23 @@ nav{
 nav a{
 	text-decoration: none;
 	color: #e4e0e0;
-	margin-left: 40px;
 }
 nav a:hover{
 	color: #bd3b3b;
 }
-
+#btnResume{
+	float: right;
+    font-size: 0.8em;
+    margin-bottom: 80px;
+}
+.navBtn{
+	margin-left: 40px;
+    float: left;
+}
+#btnNav1{
+	clear: both;
+}
+	
 .navCurrent{
 	text-decoration: underline;
 }
@@ -225,13 +235,18 @@ nav a:hover{
 	}
 	
 	nav{
-		width: 65%;
-		margin-top: 10px;
 		margin-right: 15px;
 	}
 	nav a{
 		clear: both;
+		margin-bottom: 10px;
+		font-size: 30px;
+	}
+	.navBtn{
 		float: right;
+	}
+	#btnResume{
+		clear: both;
 		margin-bottom: 10px;
 	}
 	#cv{
